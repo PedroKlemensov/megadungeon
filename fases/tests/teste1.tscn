@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://qpi482p7ull5"]
+
+[ext_resource type="PackedScene" uid="uid://d0dm0mrlxdayl" path="res://areas/testes/teste1.tscn" id="1_pfqai"]
+[ext_resource type="PackedScene" uid="uid://dfrb16w5ngaw1" path="res://Personagen/Jogador/jogador.tscn" id="2_pxhxm"]
+
+[node name="Teste1" type="Node3D"]
+
+[node name="Teste1" parent="." instance=ExtResource("1_pfqai")]
+
+[node name="Jogador" parent="." instance=ExtResource("2_pxhxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.674711, 109.42808, 0.003171444)

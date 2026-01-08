@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0dm0mrlxdayl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h41vn"]
+size = Vector2(20, 20)
+
+[node name="chao" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("PlaneMesh_h41vn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 427.61563, 0)
