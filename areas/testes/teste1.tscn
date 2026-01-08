@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0dm0mrlxdayl"]
+[gd_scene load_steps=5 format=3 uid="uid://d0dm0mrlxdayl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h41vn"]
 size = Vector2(20, 20)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h41vn"]
+
+[sub_resource type="Sky" id="Sky_2wi4d"]
+sky_material = SubResource("ProceduralSkyMaterial_h41vn")
+
+[sub_resource type="Environment" id="Environment_ydcnf"]
+background_mode = 2
+sky = SubResource("Sky_2wi4d")
 
 [node name="chao" type="Node3D"]
 
@@ -11,3 +20,6 @@ mesh = SubResource("PlaneMesh_h41vn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 427.61563, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ydcnf")
