@@ -1,13 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfrb16w5ngaw1"]
+[gd_scene load_steps=3 format=3 uid="uid://dfrb16w5ngaw1"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_40k0k"]
+[ext_resource type="Script" uid="uid://uay0ni74ahcs" path="res://Scripts/Jogador/jogadorS.gd" id="1_yswbn"]
 
-[node name="Jogador" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kwvdf"]
+height = 2.4824219
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Jogador" type="CharacterBody3D"]
+script = ExtResource("1_yswbn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_40k0k")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2587891, 0)
+shape = SubResource("CapsuleShape3D_kwvdf")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5330484, -0.26770186)
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88599014, -0.2167984)

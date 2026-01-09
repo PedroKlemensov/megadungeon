@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0dm0mrlxdayl"]
+[gd_scene load_steps=10 format=3 uid="uid://d0dm0mrlxdayl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h41vn"]
+albedo_color = Color(0.36862746, 0.18039216, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h41vn"]
-size = Vector2(20, 20)
+material = SubResource("StandardMaterial3D_h41vn")
+size = Vector2(200, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h41vn"]
+size = Vector3(200, 1, 200)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h41vn"]
 
@@ -12,14 +19,38 @@ sky_material = SubResource("ProceduralSkyMaterial_h41vn")
 background_mode = 2
 sky = SubResource("Sky_2wi4d")
 
-[node name="chao" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_h41vn"]
+size = Vector3(3, 2, 0.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+[sub_resource type="Skin" id="Skin_2wi4d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ydcnf"]
+size = Vector3(3, 2, 0.5)
+
+[node name="FaseT" type="Node3D"]
+
+[node name="chao" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3523445)
 mesh = SubResource("PlaneMesh_h41vn")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="chao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3523445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chao/StaticBody3D"]
+shape = SubResource("BoxShape3D_h41vn")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 427.61563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63.66031, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydcnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7584543, -19.219196)
+mesh = SubResource("BoxMesh_h41vn")
+skin = SubResource("Skin_2wi4d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ydcnf")
