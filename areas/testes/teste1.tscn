@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0dm0mrlxdayl"]
+[gd_scene load_steps=11 format=3 uid="uid://d0dm0mrlxdayl"]
+
+[ext_resource type="Texture2D" uid="uid://lo82ycqj6qta" path="res://icon.svg" id="1_2wi4d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h41vn"]
-albedo_color = Color(0.36862746, 0.18039216, 0, 1)
+albedo_texture = ExtResource("1_2wi4d")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h41vn"]
 material = SubResource("StandardMaterial3D_h41vn")
@@ -20,12 +22,12 @@ background_mode = 2
 sky = SubResource("Sky_2wi4d")
 
 [sub_resource type="BoxMesh" id="BoxMesh_h41vn"]
-size = Vector3(3, 2, 0.5)
+size = Vector3(6, 5, 0.5)
 
 [sub_resource type="Skin" id="Skin_2wi4d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ydcnf"]
-size = Vector3(3, 2, 0.5)
+size = Vector3(6, 5, 0.5)
 
 [node name="FaseT" type="Node3D"]
 
@@ -46,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63.66031, 0)
 environment = SubResource("Environment_ydcnf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7584543, -19.219196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0428114, -19.219196)
 mesh = SubResource("BoxMesh_h41vn")
 skin = SubResource("Skin_2wi4d")
 
