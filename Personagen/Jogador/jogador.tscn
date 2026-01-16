@@ -16,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021705389, 1.7078675, -0.00
 shape = SubResource("CapsuleShape3D_kwvdf")
 
 [node name="Camera3D" type="Camera3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4.416768)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.80161273, 0, 0, 0, 0.80161273, 0, 0, 0, 0.80161273, 0, 1.3937981, 0)
