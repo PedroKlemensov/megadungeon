@@ -21,6 +21,7 @@ var AIR_MAX_SPEED = BASE_SPEED * 2.0
 
 const JUMP_VELOCITY = 7
 
+var Pjump = true
 var Sjump = true
 
 func _ready():
@@ -54,6 +55,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		Sjump = true
+		Pjump = true
 
 #corrida
 	var speed := BASE_SPEED * (RUN_MULT if Input.is_action_pressed("sprint") else 1.0)
@@ -84,17 +86,22 @@ func _physics_process(delta: float) -> void:
 #timer para o pulo
 	if is_on_floor():
 		coyote_timer = coyote_time
+	elif is_on_wall_only():
+		coyote_timer = coyote_time
 	else:
 		coyote_timer -= delta
 
 # Pulo
 	if Input.is_action_just_pressed("junp"):
-		if is_on_floor() or coyote_timer > 0.0:
+		if is_on_floor() or coyote_timer > 0.0 and Pjump:
 			velocity.y = JUMP_VELOCITY
 			coyote_timer = 0.0
-		elif is_on_wall_only() and Sjump:
+			Pjump = false
+		elif is_on_wall_only() and Sjump and coyote_timer > 0.0:
 			velocity.y = JUMP_VELOCITY
+			print("MUITO FODA CARA")
 			Sjump = false
+			coyote_timer = 0.0
 
 
 
