@@ -12,7 +12,9 @@ const Cscale =Vector3(1, 0.5, 1)
 const BASE_SPEED: float = 10.0
 const RUN_MULT: float = 1.5
 
-const Acelerador = 2
+
+@export var coyote_time := 0.2
+var coyote_timer := 0.0
 
 const AIR_CONTROL := 0.04
 var AIR_MAX_SPEED = BASE_SPEED * 2.0
@@ -79,10 +81,17 @@ func _physics_process(delta: float) -> void:
 			velocity.x = limited.x
 			velocity.z = limited.y
 
+#timer para o pulo
+	if is_on_floor():
+		coyote_timer = coyote_time
+	else:
+		coyote_timer -= delta
+
 # Pulo
 	if Input.is_action_just_pressed("junp"):
-		if is_on_floor():
+		if is_on_floor() or coyote_timer > 0.0:
 			velocity.y = JUMP_VELOCITY
+			coyote_timer = 0.0
 		elif is_on_wall_only() and Sjump:
 			velocity.y = JUMP_VELOCITY
 			Sjump = false
