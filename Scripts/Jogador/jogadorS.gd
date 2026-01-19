@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+
+const Pscale = Vector3(1, 1, 1) 
+const Cscale =Vector3(1, 0.5, 1) 
+
+
 @export var look_sensitivity : float = 0.006
 
 
@@ -7,25 +12,28 @@ extends CharacterBody3D
 const BASE_SPEED: float = 10.0
 const RUN_MULT: float = 1.5
 
-
+const Acelerador = 2
 
 const AIR_CONTROL := 0.04
 var AIR_MAX_SPEED = BASE_SPEED * 2.0
 
+const JUMP_VELOCITY = 7
 
-const JUMP_VELOCITY = 9
 var Sjump = true
 
 func _ready():
+
+# Seta a parte visivel do jogador
 	for child in %CorpoJogador.find_children("*", "VisualInstance3D"):
 		child.set_layer_mask_value(1, false)
 		child.set_layer_mask_value(2, true)
 
+#movumenta a camera 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#elif  event.is_action_pressed("ui_cancel"):
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif  event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
@@ -36,17 +44,17 @@ func _unhandled_input(event):
 
 
 
+
 func _physics_process(delta: float) -> void:
 	# Gravidade
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Reset do wall jump ao tocar o chão
 	if is_on_floor():
 		Sjump = true
 
+#corrida
 	var speed := BASE_SPEED * (RUN_MULT if Input.is_action_pressed("sprint") else 1.0)
-	# Entrada de movimento
 	var input_dir := Input.get_vector("left", "right", "front", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -71,12 +79,15 @@ func _physics_process(delta: float) -> void:
 			velocity.x = limited.x
 			velocity.z = limited.y
 
-	# Pulo
+# Pulo
 	if Input.is_action_just_pressed("junp"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		elif is_on_wall_only() and Sjump:
 			velocity.y = JUMP_VELOCITY
 			Sjump = false
+
+
+
 
 	move_and_slide()

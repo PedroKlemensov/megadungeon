@@ -6,12 +6,13 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kwvdf"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_yswbn"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yswbn"]
 
 [node name="Jogador" type="CharacterBody3D"]
 script = ExtResource("1_yswbn")
 
 [node name="CollisionJogador" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yswbn")
 
@@ -22,10 +23,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_kwvdf")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CorpoJogador"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3490672, 0)
-mesh = SubResource("PrismMesh_yswbn")
-
 [node name="head" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6869013, 0)
@@ -33,3 +30,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6869013, 0)
 [node name="Camera3D" type="Camera3D" parent="head"]
 unique_name_in_owner = true
 cull_mask = 1048573
+
+[node name="Area3D" type="Area3D" parent="head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6869013, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="head/Area3D"]
+shape = SubResource("SphereShape3D_yswbn")
