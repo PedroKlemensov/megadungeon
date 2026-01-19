@@ -120,7 +120,7 @@ mesh = SubResource("BoxMesh_vxksq")
 shape = SubResource("ConcavePolygonShape3D_ryj0l")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.048082683, 0, 0.9988434, 0, 1, 0, -0.9988434, 0, -0.048082683, 0.77110386, 1.646179, 49.22107)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.771, 1.5, 49.221)
 mesh = SubResource("PrismMesh_h6gwg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
